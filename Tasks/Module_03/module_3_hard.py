@@ -1,7 +1,10 @@
 # Подробнее о функциях.
 
+amount = 0
 
-def calculate_structure_data(structure, sum=[0]):
+
+def calculate_structure_data(structure):
+    global amount
     if isinstance(structure, (list, set, tuple)):
         for elem in structure:
             calculate_structure_data(elem)
@@ -11,10 +14,10 @@ def calculate_structure_data(structure, sum=[0]):
         for value in structure.values():
             calculate_structure_data(value)
     elif isinstance(structure, int):
-        sum[0] = sum[0] + structure
+        amount = amount + structure
     elif isinstance(structure, str):
-        sum[0] = sum[0] + len(structure)
-    return sum[0]
+        amount = amount + len(structure)
+    return amount
 
 
 if __name__ == "__main__":
